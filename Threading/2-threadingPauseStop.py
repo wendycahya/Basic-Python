@@ -1,7 +1,7 @@
 import threading
 import time
 
-
+x = 12
 class Job(threading.Thread):
 
     def __init__(self, *args, **kwargs):
@@ -12,9 +12,10 @@ class Job(threading.Thread):
         self.__running.set() # Set running to True
 
     def run(self):
-        while self.__running.isSet():
+        while self.__running.is_set():
             self.__flag.wait() # return immediately when it is True, block until the internal flag is True when it is False
             print("Semoga bisa jalan programnya")
+            print("Change the print x value ", x)
             time.sleep(1)
 
     def pause(self):
@@ -33,6 +34,7 @@ a.start()
 time.sleep(3)
 print("Dipause")
 a.pause()
+x = 24
 time.sleep(3)
 print("Jalan lagi")
 a.resume()
