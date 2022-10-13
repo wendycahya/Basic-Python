@@ -107,7 +107,6 @@ def forward_kin(q1, q2, q3, q4, q5, q6):
 
 
 def create_plot():
-
     fig = plt.figure()
     ax = fig.add_subplot(111, projection = '3d')
     ax.set_xlabel('x axis')
@@ -150,8 +149,6 @@ def eulerAnglesToRotationMatrix(theta) :
                     [0,         math.sin(theta[0]), math.cos(theta[0])  ]
                     ])
 
-
-
     R_y = np.array([[math.cos(theta[1]),    0,      math.sin(theta[1])  ],
                     [0,                     1,      0                   ],
                     [-math.sin(theta[1]),   0,      math.cos(theta[1])  ]
@@ -161,7 +158,6 @@ def eulerAnglesToRotationMatrix(theta) :
                     [math.sin(theta[2]),    math.cos(theta[2]),     0],
                     [0,                     0,                      1]
                     ])
-
 
     R = np.dot(R_z, np.dot( R_y, R_x ))
 
