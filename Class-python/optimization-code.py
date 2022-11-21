@@ -1,33 +1,24 @@
 # Using CVXPY
 import cvxpy as cp
+import numpy as np
 
-pp = cp.Variable()
-pc = cp.Variable()
+A = np.array([[0, -1, 0, -1, 1, 0],
+              [-2, 1, 0, 2, 0, -1],
+              [0, 1, 0, 0, 0, 1],
+              [0, 0, 1, 0, -1, 2]
+              ])
+b = np.array([2, 1, 1, -3])
 
-qp = cp.Variable()
-qc = cp.Variable()
+x_L1 = cp.Variable(shape=6)
 
-pfr = cp.Variable()
-pto = cp.Variable()
+constraints = [A*x_L1 == b]
 
-qfr = cp.Variable()
-qto = cp.Variable()
+obj = cp.Minimize(cp.norm(x_L1, 1))
 
-constraints = [pp >= 0, pc >= 0, pc <= 100,
-               pfr >= 0, qfr >= 0,
-               pto >= 0, qto >= 0,
-               pfr ** 2 + qfr ** 2 <= 12,
-               pto ** 2 + qto ** 2 <= 24,
-               pp == pc + pfr + pto,
-               qp == qc + qfr + qto
-
-               ]
-prob = cp.Problem(cp.Maximize(5 * pc - 4 * pp), constraints)
-
+prob = cp.Problem(obj, constraints)
 prob.solve()
 
-# Print result.
-print("The optimal value is", prob.value)
-print("A solution x is")
-print(pp.value)
-print(pc.value)
+print("Status: {}".format(prob.status))
+
+print("optimal objective value: {}".format(obj.value))
+
