@@ -1,7 +1,7 @@
 from robodk.robolink import *       # import the robolink library (bridge with RoboDK)
 RDK = Robolink()                    # establish a link with the simulator
 robot = RDK.Item('Robot')           # retrieve the robot
-robot.setJoints([0,0,0,0,0,0])      # set all robot axes to zero
+robot.setJoints([0, 0, 0, 0, 0, 0])      # set all robot axes to zero
 
 target = RDK.Item('Target')         # retrieve the Target item
 robot.MoveJ(target)                 # move the robot to the target

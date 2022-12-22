@@ -25,11 +25,11 @@ x0[3] = 1.0
 print('Initial Objective: ' + str(objective(x0)))
 
 # optimize
-b = (1.0,5.0)
+b = (1.0, 5.0)
 bnds = (b, b, b, b)
 con1 = {'type': 'ineq', 'fun': constraint1}
 con2 = {'type': 'eq', 'fun': constraint2}
-cons = ([con1,con2])
+cons = ([con1, con2])
 # SLSQP
 solution = minimize(objective, x0, method='SLSQP',\
                     bounds=bnds,constraints=cons)
