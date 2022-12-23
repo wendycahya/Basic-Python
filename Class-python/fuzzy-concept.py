@@ -34,8 +34,8 @@ R4 = "IF (TimeDistance IS positive) OR (ScalarProduct IS positive) THEN (Alpha I
 FS.add_rules([R1, R2, R3, R4])
 #
 # # Set antecedents values
-FS.set_variable("TimeDistance", -0.75)
-FS.set_variable("ScalarProduct", 0.15)
+FS.set_variable("TimeDistance", 1.1)
+FS.set_variable("ScalarProduct", -0.2)
 
 # Perform Mamdani inference and print output
 print(FS.Mamdani_inference(["Alpha"]))
