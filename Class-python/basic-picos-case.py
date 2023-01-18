@@ -51,15 +51,15 @@ def velXYZ(Xn, Xn_last, ts):
 # Vr = inputVRVH(VelnRob, XnRob, XnHum)
 dt = 0.41
 
-d = 1200
-Sp = 1897.2789
-SPmin = 515
+d = 2500
+Sp = 2002.575
+SPmin = 1763
 
 dPr = 1500
-dP_1 = 1465
-Vr = 1465
+dP_1 = 0
+Vr = 1500
 
-Vrmax = 1465
+Vrmax = 0
 
 #constrains
 if d >= Sp + 150:
